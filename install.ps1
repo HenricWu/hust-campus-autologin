@@ -16,6 +16,7 @@ Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'uninstall.ps1') -Destination $i
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'campus-icon.ico') -Destination $installDir -Force
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'campus-icon.png') -Destination $installDir -Force
 Get-ChildItem -LiteralPath $PSScriptRoot -Filter 'hust-seal*.png' -File | Copy-Item -Destination $installDir -Force
+Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'assets') -Destination $installDir -Recurse -Force
 # Keep saved settings readable only by this account, SYSTEM and administrators.
 & icacls.exe $dataDir /inheritance:r /grant:r "*$($identity.User.Value):(OI)(CI)F" '*S-1-5-18:(OI)(CI)F' '*S-1-5-32-544:(OI)(CI)F' | Out-Null
 if ($LASTEXITCODE -ne 0) { throw 'Could not protect the settings directory.' }

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="110" viewBox="0 0 480 110"><g transform="translate(10 5)"><circle cx="50" cy="50" r="48" fill="#eff8f4"/><g transform="translate(26 26) scale(2)" fill="none" stroke="#178568" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10" />
+  <path d="m16 9-5.5 5.5L8 12" />
+</g></g><g transform="translate(130 5)"><circle cx="50" cy="50" r="48" fill="#f3f4f5"/><g transform="translate(26 26) scale(2)" fill="none" stroke="#475569" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
+  <path d="M21 3v5h-5" />
+  <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
+  <path d="M8 16H3v5" />
+</g></g><g transform="translate(250 5)"><circle cx="50" cy="50" r="48" fill="#fbf6ec"/><g transform="translate(26 26) scale(2)" fill="none" stroke="#a97624" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10" />
+  <line x1="12" x2="12" y1="8" y2="12" />
+  <line x1="12" x2="12.01" y1="16" y2="16" />
+</g></g><g transform="translate(370 5)"><circle cx="50" cy="50" r="48" fill="#f3f4f5"/><g transform="translate(26 26) scale(2)" fill="none" stroke="#737980" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10" />
+  <line x1="10" x2="10" y1="15" y2="9" />
+  <line x1="14" x2="14" y1="15" y2="9" />
+</g></g></svg>

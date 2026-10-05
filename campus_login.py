@@ -31,7 +31,7 @@ from urllib.parse import quote, parse_qs, urljoin, urlsplit
 PORTAL = "http://172.18.18.60:8080"
 HOST = "172.18.18.60"
 DEFAULT_GUID = ""  # First setup chooses a connected physical adapter; saved choices stay explicit.
-VERSION = "1.3.2"
+VERSION = "1.3.3"
 CONTRIBUTOR = "HenricWu"
 CONTACT_EMAIL = "haoyangwu@hust.edu.cn"
 PROJECT_URL = "https://github.com/HenricWu/hust-campus-autologin"
@@ -479,6 +479,27 @@ def gui():
     font = "Microsoft YaHei UI"
     root.configure(bg=colors["bg"])
     asset_dir = Path(__file__).resolve().parent
+    try:
+        icon_atlas = json.loads((asset_dir / "assets/icons/raster.json").read_text("utf-8"))
+    except (OSError, ValueError):
+        icon_atlas = {}
+    icon_cache = {}
+    root.icon_cache = icon_cache
+
+    def icon_photo(kind, color, size=16):
+        sizes = icon_atlas.get("sizes", [])
+        if not sizes:
+            return None
+        pixels = min(sizes, key=lambda n: abs(n-size*scale))
+        hex_color = "ffffff" if color == "white" else color.lstrip("#").lower()
+        key = f"{kind}_{hex_color}_{pixels}"
+        data = icon_atlas.get("glyphs", {}).get(key)
+        if not data:
+            return None
+        if key not in icon_cache:
+            icon_cache[key] = tk.PhotoImage(data=data, format="png")
+        return icon_cache[key]
+
     if (asset_dir / "campus-icon.ico").exists():
         root.iconbitmap(str(asset_dir / "campus-icon.ico"))
     root.option_add("*Font", (font, 10))
@@ -502,6 +523,11 @@ def gui():
                                      smooth=True, splinesteps=30, **kwargs)
 
     def symbol(c, kind, x, y, color, size=16):
+        photo = icon_photo(kind, color, size)
+        if photo is not None:
+            c.create_image(x, y, image=photo)
+            return
+        # Keep basic controls usable if an installation's image assets are missing.
         s=size/20
         def line(*points):
             c.create_line(*[v for i in range(0,len(points),2) for v in (x+points[i]*s,y+points[i+1]*s)],
@@ -723,7 +749,9 @@ def gui():
     label(status_top,"连接状态",size=13,bold=True).pack(side="left")
     status_dot = label(status_top,"●",size=13,fg=colors["muted"])
     status_dot.pack(side="right")
-    status_icon = tk.Canvas(right,width=68,height=70,bg="white",highlightthickness=0)
+    status_sizes=icon_atlas.get("status_sizes",[72])
+    status_pixels=min(status_sizes,key=lambda n:abs(n-72*scale))
+    status_icon = tk.Canvas(right,width=status_pixels,height=status_pixels+2,bg="white",highlightthickness=0)
     status_icon.pack(anchor="w",pady=(18,8))
     connection = label(right,"正在检测",size=21,bold=True)
     connection.pack(anchor="w")
@@ -749,10 +777,9 @@ def gui():
 
     footer=tk.Frame(outer,bg=colors["bg"])
     footer.pack(fill="x",pady=(18,0))
-    lock=tk.Canvas(footer,width=19,height=22,bg=colors["bg"],highlightthickness=0)
+    lock=tk.Canvas(footer,width=24,height=24,bg=colors["bg"],highlightthickness=0)
     lock.pack(side="left",padx=(0,7))
-    lock.create_arc(5,2,14,13,start=0,extent=180,outline=colors["muted"],width=1.4,style="arc")
-    rounded(lock,3,9,16,19,3,fill="",outline=colors["muted"],width=1.2)
+    symbol(lock,"lock",12,12,colors["muted"],16)
     label(footer,"凭据仅保存在本机，使用 Windows 加密保护",size=9,fg=colors["muted"]).pack(side="left")
     label(footer,f"HUST CONNECT  /  {VERSION}",size=8,fg="#92989E").pack(side="right")
     credits=tk.Frame(outer,bg=colors["bg"])
@@ -767,7 +794,8 @@ def gui():
         root.after(1800,lambda:email_label.configure(text=CONTACT_EMAIL))
     email_label.bind("<Button-1>",copy_email)
     email_label.bind("<Return>",copy_email)
-    project_link=label(credits,"GitHub ↗",size=9,fg=colors["muted"],cursor="hand2",takefocus=True)
+    project_link=label(credits,"GitHub ",size=9,fg=colors["muted"],cursor="hand2",takefocus=True,
+                       image=icon_photo("external",colors["muted"],14),compound="right")
     project_link.pack(side="left",padx=(16,0))
     def open_project(event=None):
         import webbrowser
@@ -776,20 +804,20 @@ def gui():
     project_link.bind("<Return>",open_project)
     label(credits,COPYRIGHT_NOTICE,size=8,fg="#92989E").pack(side="right")
 
-    def draw_status(online, caution=False):
+    def draw_status(online, caution=False, paused=False):
         status_icon.delete("all")
-        color = colors["green"] if online else colors["amber"] if caution else colors["blue"]
-        tint = colors["green_soft"] if online else colors["amber_soft"] if caution else colors["blue_soft"]
-        status_icon.create_oval(0,0,65,65,fill=tint,outline="")
-        if online:
-            status_icon.create_oval(18,18,47,47,outline=color,width=2)
-            status_icon.create_line(25,33,31,39,41,27,fill=color,width=2.5,capstyle="round",joinstyle="round")
-        elif caution:
-            status_icon.create_line(33,20,33,36,fill=color,width=3,capstyle="round")
-            status_icon.create_oval(31,42,35,46,fill=color,outline="")
+        mode="online" if online else "attention" if caution else "paused" if paused else "checking"
+        color=colors["green"] if online else colors["amber"] if caution else colors["muted"]
+        key=f"{mode}_{status_pixels}"
+        data=icon_atlas.get("status",{}).get(key)
+        if data:
+            if key not in icon_cache:
+                icon_cache[key]=tk.PhotoImage(data=data,format="png")
+            status_icon.create_image(0,0,image=icon_cache[key],anchor="nw")
         else:
-            status_icon.create_arc(17,17,49,49,start=35,extent=285,outline=color,width=2.5,style="arc")
-            status_icon.create_line(41,15,45,22,37,23,fill=color,width=2.5,joinstyle="round")
+            status_icon.create_text(status_pixels/2,status_pixels/2,
+                                    text="✓" if online else "!" if caution else "Ⅱ" if paused else "↻",
+                                    font=(font,28),fill=color)
         status_dot.configure(fg=color)
 
     def render_state(state=None):
@@ -810,7 +838,7 @@ def gui():
                 "BACKOFF":"等待重新尝试","WAIT_NETWORK":"等待校园网","WAITING":"等待连接","ERROR":"检测遇到问题"}
         connection.configure(text=titles.get(code,"准备就绪" if chosen else "正在读取"))
         detail_var.set(state.get("message") or ("填写账号和密码，保存后启用自动登录。" if not enabled else "后台会每分钟检查一次校园网认证。"))
-        draw_status(online,caution)
+        draw_status(online,caution,paused=not enabled and not online)
         stamp=state.get("checked_at","")
         values["last"].configure(text=stamp[11:19] if len(stamp)>19 else "—")
         if combo.current()>=0:

@@ -16,7 +16,9 @@
 
 首次填好账号并开启自动检测后，关闭软件窗口、锁屏或断开远程控制，后台任务仍会运行。
 
-![HUST Connect 白色界面](docs/interface.png)
+[![HUST Connect 界面预览](docs/interface-v1.3.3.png)](https://raw.githubusercontent.com/HenricWu/hust-campus-autologin/v1.3.3/docs/interface-v1.3.3.png)
+
+[查看原始分辨率 PNG](https://raw.githubusercontent.com/HenricWu/hust-campus-autologin/v1.3.3/docs/interface-v1.3.3.png) · 1234 × 980 像素
 
 *界面示意，使用虚构账号。作者：**HenricWu** · **haoyangwu@hust.edu.cn***
 
@@ -38,7 +40,7 @@
 
 进入 [Releases 下载页](https://github.com/HenricWu/hust-campus-autologin/releases/latest)，展开 **Assets**，下载：
 
-**`HUST-Connect-v1.3.2-Windows.zip`**
+**`HUST-Connect-v1.3.3-Windows.zip`**
 
 右键选择 **全部解压**，打开解压后的 `CampusAutoLogin` 文件夹。安装前请先解压完整文件夹。
 
@@ -190,4 +192,4 @@ python tests/check_gui_actions.py
 
 **© 2026 HenricWu. All rights reserved.**
 
-[版权声明](NOTICE.md) · [校徽与资源来源](校徽来源.md)
+[版权声明](NOTICE.md) · [校徽与资源来源](校徽来源.md) · [图标许可](assets/icons/LUCIDE-LICENSE.txt)
