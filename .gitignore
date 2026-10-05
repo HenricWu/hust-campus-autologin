@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+data/
+settings.json
+status.json
+installation.json
+scheduler-probe.json
+activity.log*
+worker.lock
+*.lnk
+open.vbs
+work/
+dist/
+build/

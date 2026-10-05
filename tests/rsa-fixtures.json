@@ -1,0 +1,52 @@
+{
+  "page": {
+    "passwordEncrypt": "true",
+    "publicKeyExponent": "10001",
+    "publicKeyModulus": "94dd2a8675fb779e6b9f7103698634cd400f27a154afa67af6166a43fc26417222a79506d34cacc7641946abda1785b7acf9910ad6a0978c91ec84d40b71d2891379af19ffb333e7517e390bd26ac312fe940c340466b4a5d4af1d65c3b5944078f96a1a51a5a53e4bc302818b7c9f63c4a1b07bd7d874cef1c3d4b2f5eb7871",
+    "validCodeUrl": ""
+  },
+  "cases": [
+    {
+      "password": "Example-Not-A-Real-Password!25",
+      "query": "wlanuserip=10.0.0.2&mac=aa-bb-cc-dd-ee-ff",
+      "mac": "aa-bb-cc-dd-ee-ff",
+      "expected": "2ab9c63774fbf15f19de760eec2354d56a6d35dcdb89de9e3705c9b23f011c08283935abf6af5f1fd95ecc29d2ca41cab446b251a11f7fd10c53248494a436dc7a4bb105def072e4b8df8cda45c37834d30be23dfc74187b9135215a0be97288f8e58e10d9866d26d45985d222dd78697877fdf4c6ff631df71cace968aa9671"
+    },
+    {
+      "password": "Test+With&Symbols%中文",
+      "query": "wlanuserip=10.0.0.2",
+      "mac": "111111111",
+      "expected": "365c4f3d4a07f7e5444bb0f40c92b6fc49993570299137a4e7ad989b34c683ca37e3e2e97f3a14648ec01e870abd81b029044fb259080f2d916defb9e908efa7add1e4abeac33a1f1adcec2a2ef5c4c52851956998d8da153ec91ae12e106814854e5a010663e29d70fe2682faccd6693bc7d10142db89776e806a33110ec5ea"
+    },
+    {
+      "password": "LongFakePasswordLongFakePasswordLongFakePasswordLongFakePasswordLongFakePasswordLongFakePasswordLongFakePasswordLongFakePasswordLongFakePasswordLongFakePasswordLongFakePasswordLongFakePassword",
+      "query": "ip=10.0.0.2&mac=aa%3Abb",
+      "mac": "aa%3Abb",
+      "expected": "6545cfe5d6e0f062d083f568fc1b5722d60c3f5071aacd3e35c91e9ec71431495a7c703e6ec29df5b7aed84aa5144a0ea733a48c3da171aeec3330a1cb9daa257244deb8cfd3055e6321fc9b45669ddf475d59523cba7c27700af3a7d85d2a6c24afd9f60f1fb7722307e1bf868b6f4f0e8f01cb7531171697a54e2347ac7ce6 33591ee97aa616c7f3cb0e248d26058bc47c0dae1b5c22bfaf3d4c721f1dd31107bd6b14e1987a4af194a52433d423e7d3847a0212b35587ea89e38cbf06b3fef232ef83ee4c30fa34900d97f41fba31a4f61d08800cd5a3829a52eff956feb5171b1dc56260e5a963f99bb26cb0588b23fcce27d3891fb03109aa5ead61d0da"
+    },
+    {
+      "password": "中A文B测试",
+      "query": "ip=10.0.0.2",
+      "mac": "111111111",
+      "expected": "8f447bf7fb4d19ad8bf1d30bcd31bdd8c320c219fbe01d55619519bde32614bc831cd17f872eaa29c03f1a739ccb8bcafd5ac934a7bba2d0c5366b81c2c813d65a0e407d6e087020e9b0aa674ce2c1345944a6ff332fdba6946ac0603af7eec014e167b78d78d94a086a638165d8447d53e033a21aef4919962bd592d147f00d"
+    },
+    {
+      "password": "😀🔑Fake",
+      "query": "ip=10.0.0.2",
+      "mac": "111111111",
+      "expected": "26546d34b77b82f6efb3580a58ee06780a3a12afbc41442eba2e646136ec61c15d00f74bc65dbfad8ef7f42e3ec0e95b081b44e38f382a6188e9d4c7fa47d17b62631bc672ebcbad40111cf1561e96899972d576ee3beb5a169d994061f65cca7117e2c59bc0b4a24193e9c3eb396449788ec95aa9ddf00b65b64cd091b24e2d"
+    },
+    {
+      "password": "éÿĀ密码",
+      "query": "ip=10.0.0.2",
+      "mac": "111111111",
+      "expected": "50e5f0bf0ceb8cb2e44a18d20048248fa5d1395722c57e65c72bceaaac8b5d1e88afc91194c5adfa011ef7838601a568bc25a977956273ce62f45afd659f38299fde43a577f97424b078ffc0e36b304c8bdd39ba9806cf94360942c2d454e98658d48a49f0b2d92a7d462dfb53c41ca3fa1457ca78e8c01820682186bb6d75d7"
+    },
+    {
+      "password": "边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界边界",
+      "query": "ip=10.0.0.2",
+      "mac": "111111111",
+      "expected": "12d571e5d6f2c94b3a11c3fc5b8cf04b61661bc65b4b19108fe8caa42d034168b91f2a5cfefd8371dfe82145eeb686dfafd2d0a9d67a5d2af9dbf854386e90b7aa8db2015a93e7c94f01868edae509ed3573e83efa4c1c0b75edf73c4b028dd085ef524381a66e14b5ca452407e13183951be6decca9809f63f005fb0e4d39d5 487397ebcb3750173af321f394061ba567f79078238bbe6545a8029ee9fc61a25565fb70888cdd3951146666f1aa59231f200afa0a83b2bf28e5525ce70be8ddd6551cfed313c22e8633b3d09788ccf66599102613cbe03ffcf70e8e8063d5f7f9ea11af2f173678ae40426fb5dd2559e2705284006401671147f4cf200ee9dc"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "version": "1.3.1",
+  "verified_at": "2026-10-05T18:21:55+08:00",
+  "unit_tests": {
+    "passed": 20,
+    "failed": 0
+  },
+  "installer": "The administrator-run CMD entry completed successfully, preserved saved credentials and monitoring preference, and opened the installed GUI.",
+  "ui_action_test": {
+    "title": "华中科技大学校园网自动登录",
+    "login_submissions": 2,
+    "periodic_enabled": false,
+    "code": "RECONNECTED",
+    "callback_errors": [],
+    "steps": [
+      {
+        "action": "login",
+        "enabled": true
+      },
+      {
+        "action": "login",
+        "enabled": true
+      }
+    ]
+  },
+  "ui_geometry": {
+    "width": 1234,
+    "height": 980,
+    "widgets": 72,
+    "out_of_bounds": []
+  },
+  "visual_qa": "Installed white-theme window inspected: white header and background, neutral gray fields and borders, charcoal primary button, official full-color seal, masked password, one-click login, minute switch, visible HenricWu contributor and email.",
+  "logo_assets": {
+    "original_sheet_size": [
+      6733,
+      4961
+    ],
+    "seal_crop": [
+      3192,
+      1874,
+      5667,
+      3761
+    ],
+    "seal_size": [
+      2475,
+      1887
+    ],
+    "display_widths": [
+      144,
+      180,
+      216,
+      288,
+      360,
+      432
+    ],
+    "icon_sizes": [
+      16,
+      24,
+      32,
+      48,
+      64,
+      128,
+      256
+    ]
+  },
+  "encryption_reference": "7 dummy-password ciphertexts match the portal JavaScript including Unicode and multi-block cases.",
+  "scheduler": {
+    "account": "SYSTEM",
+    "last_run": "2026-10-05T18:21:42.0000000+08:00",
+    "interval": [
+      "PT1M"
+    ],
+    "next_run": "2026-10-05T18:22:42.0000000+08:00",
+    "boot_trigger": true,
+    "logon_type": "ServiceAccount",
+    "last_result": 0
+  },
+  "final_state": {
+    "enabled": true,
+    "credentials_saved": true,
+    "code": "ONLINE",
+    "checked_at": "2026-10-05T18:21:44+08:00"
+  },
+  "source_and_installed_sha256": "cded390e26dbc7baee0d4cddd7779816a3dbbb149efb8d474056792a53489daa",
+  "private_content_scan": "No saved real username, password, encrypted credential blob, local user path or machine adapter ID in package.",
+  "limits": "No intentional logout, reboot, or real offline password authentication was performed. Offline recovery and manual/automatic interaction were simulated. Real monthly expiry remains an end-to-end validation."
+}
