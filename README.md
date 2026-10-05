@@ -18,7 +18,7 @@
 
 ![HUST Connect 白色界面](docs/interface.png)
 
-*界面示意，使用虚构账号。贡献者：**HenricWu** · **haoyangwu@hust.edu.cn***
+*界面示意，使用虚构账号。作者：**HenricWu** · **haoyangwu@hust.edu.cn***
 
 ## 使用前确认
 
@@ -30,7 +30,7 @@
 | 认证入口 | 当前适配 `http://172.18.18.60:8080` 的锐捷 ePortal |
 | 账号 | 可以正常在校园网网页登录的账号与密码 |
 
-> 下载包需要先安装 Python。程序只使用 Python 标准库，无须另外运行 `pip install`。这是个人维护的辅助工具，非学校官方软件。
+> 下载包需要先安装 Python。程序只使用 Python 标准库，无须另外运行 `pip install`。
 
 ## 快速开始
 
@@ -38,7 +38,7 @@
 
 进入 [Releases 下载页](https://github.com/HenricWu/hust-campus-autologin/releases/latest)，展开 **Assets**，下载：
 
-**`HUST-Connect-v1.3.1-Windows.zip`**
+**`HUST-Connect-v1.3.2-Windows.zip`**
 
 右键选择 **全部解压**，打开解压后的 `CampusAutoLogin` 文件夹。安装前请先解压完整文件夹。
 
@@ -100,7 +100,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
 | **每分钟自动检测** | 开启或暂停后台自动检查与重连 |
 | **仅检测连接** | 只查询当前认证状态，不提交登录 |
 | **查看日志** | 打开本机的配置、状态和日志目录 |
-| **底部邮箱** | 点击复制贡献者联系邮箱 |
+| **底部邮箱** | 点击复制作者联系邮箱 |
+| **GitHub ↗** | 打开作者维护的项目仓库 |
 
 ## 月初断网时会发生什么
 
@@ -179,10 +180,14 @@ python tests/check_gui_actions.py
 
 详细本机验证记录见 [验证记录.json](验证记录.json)，补充操作说明见 [使用说明.md](使用说明.md)。
 
-## 贡献者与反馈
+## 作者与支持
 
 **HenricWu** · [GitHub](https://github.com/HenricWu) · **haoyangwu@hust.edu.cn**
 
 反馈问题请到 [Issues](https://github.com/HenricWu/hust-campus-autologin/issues)，说明 Windows/Python 版本、界面状态、复现步骤，并附脱敏后的错误信息。
 
-彩色校徽来自学校官网，来源见 [校徽来源.md](校徽来源.md)。校徽相关权利归相应权利人所有，不代表学校对本工具的官方发布或背书。当前仓库未预设代码开源许可证。
+---
+
+**© 2026 HenricWu. All rights reserved.**
+
+[版权声明](NOTICE.md) · [校徽与资源来源](校徽来源.md)

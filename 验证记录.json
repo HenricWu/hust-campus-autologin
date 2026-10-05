@@ -1,6 +1,6 @@
 {
-  "version": "1.3.1",
-  "verified_at": "2026-10-05T18:21:55+08:00",
+  "version": "1.3.2",
+  "verified_at": "2026-10-05T18:31:50+08:00",
   "unit_tests": {
     "passed": 20,
     "failed": 0
@@ -26,10 +26,10 @@
   "ui_geometry": {
     "width": 1234,
     "height": 980,
-    "widgets": 72,
+    "widgets": 73,
     "out_of_bounds": []
   },
-  "visual_qa": "Installed white-theme window inspected: white header and background, neutral gray fields and borders, charcoal primary button, official full-color seal, masked password, one-click login, minute switch, visible HenricWu contributor and email.",
+  "visual_qa": "White-theme window inspected: full-color seal, masked password, one-click login, minute switch, HenricWu author and email, GitHub source link and copyright footer. Native layout check passed.",
   "logo_assets": {
     "original_sheet_size": [
       6733,
@@ -66,11 +66,11 @@
   "encryption_reference": "7 dummy-password ciphertexts match the portal JavaScript including Unicode and multi-block cases.",
   "scheduler": {
     "account": "SYSTEM",
-    "last_run": "2026-10-05T18:21:42.0000000+08:00",
+    "last_run": "2026-10-05T18:31:43.0000000+08:00",
     "interval": [
       "PT1M"
     ],
-    "next_run": "2026-10-05T18:22:42.0000000+08:00",
+    "next_run": "2026-10-05T18:32:42.0000000+08:00",
     "boot_trigger": true,
     "logon_type": "ServiceAccount",
     "last_result": 0
@@ -79,9 +79,9 @@
     "enabled": true,
     "credentials_saved": true,
     "code": "ONLINE",
-    "checked_at": "2026-10-05T18:21:44+08:00"
+    "checked_at": "2026-10-05T18:31:45+08:00"
   },
-  "source_and_installed_sha256": "cded390e26dbc7baee0d4cddd7779816a3dbbb149efb8d474056792a53489daa",
+  "source_and_installed_sha256": "dd9164c7272147acf17b20669b6006691b48e7d6e7a946fb31f8a710cd2a5663",
   "private_content_scan": "No saved real username, password, encrypted credential blob, local user path or machine adapter ID in package.",
   "limits": "No intentional logout, reboot, or real offline password authentication was performed. Offline recovery and manual/automatic interaction were simulated. Real monthly expiry remains an end-to-end validation."
 }

@@ -31,9 +31,11 @@ from urllib.parse import quote, parse_qs, urljoin, urlsplit
 PORTAL = "http://172.18.18.60:8080"
 HOST = "172.18.18.60"
 DEFAULT_GUID = ""  # First setup chooses a connected physical adapter; saved choices stay explicit.
-VERSION = "1.3.1"
+VERSION = "1.3.2"
 CONTRIBUTOR = "HenricWu"
 CONTACT_EMAIL = "haoyangwu@hust.edu.cn"
+PROJECT_URL = "https://github.com/HenricWu/hust-campus-autologin"
+COPYRIGHT_NOTICE = "© 2026 HenricWu. All rights reserved."
 # ProgramData avoids packaged-app AppData virtualization: GUI and Scheduler
 # must see exactly the same files, including when launched from Codex/MSIX.
 DATA = Path(os.environ.get("ProgramData", "C:/ProgramData")) / "CampusAutoLogin" / "data" / os.environ.get("USERNAME", "default")
@@ -755,7 +757,7 @@ def gui():
     label(footer,f"HUST CONNECT  /  {VERSION}",size=8,fg="#92989E").pack(side="right")
     credits=tk.Frame(outer,bg=colors["bg"])
     credits.pack(fill="x",pady=(7,0))
-    label(credits,f"贡献者  {CONTRIBUTOR}",size=9,fg=colors["blue"],bold=True).pack(side="left")
+    label(credits,f"作者  {CONTRIBUTOR}",size=9,fg=colors["blue"],bold=True).pack(side="left")
     email_label=label(credits,CONTACT_EMAIL,size=9,fg=colors["muted"],cursor="hand2",takefocus=True)
     email_label.pack(side="left",padx=(16,0))
     def copy_email(event=None):
@@ -765,7 +767,14 @@ def gui():
         root.after(1800,lambda:email_label.configure(text=CONTACT_EMAIL))
     email_label.bind("<Button-1>",copy_email)
     email_label.bind("<Return>",copy_email)
-    label(credits,"个人项目 · 非学校官方软件",size=8,fg="#92989E").pack(side="right")
+    project_link=label(credits,"GitHub ↗",size=9,fg=colors["muted"],cursor="hand2",takefocus=True)
+    project_link.pack(side="left",padx=(16,0))
+    def open_project(event=None):
+        import webbrowser
+        webbrowser.open(PROJECT_URL)
+    project_link.bind("<Button-1>",open_project)
+    project_link.bind("<Return>",open_project)
+    label(credits,COPYRIGHT_NOTICE,size=8,fg="#92989E").pack(side="right")
 
     def draw_status(online, caution=False):
         status_icon.delete("all")

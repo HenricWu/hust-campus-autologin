@@ -1,6 +1,12 @@
+## v1.3.2：公开下载与作者署名
+
+仓库及安装包现已开放访问，无需登录 GitHub 即可下载。本版在软件底部加入作者、邮箱、GitHub 项目入口及版权声明：
+
+**© 2026 HenricWu. All rights reserved.**
+
 ## 下载哪个文件
 
-在页面下方 **Assets** 中下载 **`HUST-Connect-v1.3.1-Windows.zip`**，右键选择 **全部解压**。
+在页面下方 **Assets** 中下载 **`HUST-Connect-v1.3.2-Windows.zip`**，右键选择 **全部解压**。
 
 **运行前需要：Windows 10/11 + Python 3.10 或更新版本（含 Tkinter），安装需要管理员权限。** Python 安装时请配置 PATH；无需额外安装第三方 Python 包。
 
@@ -23,7 +29,7 @@
 - 一键登录、每 60 秒检测及掉线后按需重登。
 - 开机后台运行，锁屏或远程控制断开后继续检测。
 - 本机加密保存凭据；发布包不包含个人账号密码。
-- 贡献者 **HenricWu**，联系邮箱 **haoyangwu@hust.edu.cn**。
+- 作者 **HenricWu**，联系邮箱 **haoyangwu@hust.edu.cn**。
 
 ## 升级和卸载
 
@@ -44,14 +50,14 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\uninstall.ps1
 - 正常情况下每分钟检测；认证服务器暂时拒绝时，登录提交会逐步延长重试间隔。
 - 20 项核心测试、模拟重连、界面按钮联动及本机在线检测已通过。真实月初失效和重启后的完整恢复链路仍需实际运行验证。
 
-个人维护项目，非学校官方软件。校徽来源与权利说明见仓库文档。
+作者与版权声明见 [NOTICE.md](https://github.com/HenricWu/hust-campus-autologin/blob/main/NOTICE.md)。
 
 ### 可选：核对下载文件
 
-下载 `HUST-Connect-v1.3.1-SHA256.txt`，在安装包所在目录运行：
+下载 `HUST-Connect-v1.3.2-SHA256.txt`，在安装包所在目录运行：
 
 ```powershell
-Get-FileHash .\HUST-Connect-v1.3.1-Windows.zip -Algorithm SHA256
+Get-FileHash .\HUST-Connect-v1.3.2-Windows.zip -Algorithm SHA256
 ```
 
 将结果与校验文件比较即可。
